@@ -7,6 +7,20 @@ def test_fn():
     answer = fn(given_coins_list, given_change)
     print answer
     assert answer == [50, 10, 2, 1]
+    given_coins_list = [1, 5, 10, 20, 50]
+    given_change = 63
+
+    answer = fn(given_coins_list, given_change)
+    print answer
+    assert answer == [50, 10, 1, 1, 1]
+    given_coins_list = [1, 5, 10, 20, 50]
+    given_change = 42
+
+    answer = fn(given_coins_list, given_change)
+    print answer
+    assert answer == [20, 20, 1, 1]
+
+
 
 
 def fn(coins_list, change):
