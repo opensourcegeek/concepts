@@ -18,7 +18,7 @@ def fn(given_array, value):
         return fn(given_array[0:mid_item_index], value)
 
     elif current_item < value:
-        return fn(given_array[mid_item_index:], value)
+        return fn(given_array[mid_item_index+1:], value)
 
 
 test_fn()
