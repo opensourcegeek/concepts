@@ -19,6 +19,12 @@ def test_fn():
     answer = fn(given, given_sum)
     assert answer == [ [12, 2, 3], [9, 8] ]
 
+    given = [3,2,4]
+    given_sum = 6
+    answer = fn(given, given_sum)
+    assert answer == [ [2, 4] ]
+
+
 
 
 
