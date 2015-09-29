@@ -188,7 +188,11 @@ class Tree:
     def delete(self, item):
         node_to_delete = self.search(item)
         print node_to_delete
-        self.root.delete(node_to_delete)
+        if node_to_delete:
+            self.root.delete(node_to_delete)
+
+        else:
+            raise Exception("cannot find node to delete")
 
     def find_min(self):
         min_node = self.root.find_min()
