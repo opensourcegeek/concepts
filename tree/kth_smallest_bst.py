@@ -23,6 +23,9 @@ def test_fn():
     bst.delete(5)
 
     bst.print_in_order()
+    print("")
+    print("Kth smallest is {}".format(bst.find_kth_smallest(5)))
+    print("Kth smallest is {}".format(bst.find_kth_smallest(1)))
 
 
 
@@ -166,6 +169,27 @@ class BSTNode:
 
             min_node.delete(min_node)
 
+    def find_smallest_at_k(self, k, stack, i):
+        if self is None:
+            return i
+
+        if (self.left is not None):
+            i = self.left.find_smallest_at_k(k, stack, i)
+
+        print(stack, i)
+        stack.insert(i, self.data)
+        i += 1
+
+        if i == k:
+            print(stack[k - 1])
+            print "Returning"
+
+
+        if (self.right is not None):
+            i = self.right.find_smallest_at_k(k, stack, i)
+
+        return i
+
 
 
 class Tree:
@@ -207,6 +231,34 @@ class Tree:
 
     def print_in_order(self):
         self.root.print_in_order()
+
+    def find_kth_smallest(self, k):
+        #our_stack = []
+        #self.root.find_smallest_at_k(k, our_stack, 0)
+
+        #print(our_stack)
+        #return our_stack[k-1]
+        stack = []
+        current = self.root
+
+        while (stack != [] or current != None):
+            if(current != None):
+                stack.append(current)
+                current = current.left
+
+            else:
+                node = stack.pop()
+                k -= 1
+                if k == 0:
+                    return node.data
+
+                print(node)
+
+                current = node.right
+
+
+        return None
+
 
 
 test_fn()
